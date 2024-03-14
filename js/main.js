@@ -186,6 +186,7 @@ jQuery(window).load(function () {
             },
             pagination: '#' + id + '_fw_image_slide_pager',
             next: '#' + id + '_fw_next',
+            prev: '#' + id + '_fw_prev', // previous slider ??
             scroll: {
                 duration: parseFloat(speed_value)
             },
