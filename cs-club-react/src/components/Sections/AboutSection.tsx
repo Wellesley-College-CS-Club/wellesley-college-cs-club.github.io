@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const Section = styled.div`
-  padding: 80px 0;
+  padding: 80px 0 0 0;
   background-color: #f8f9fa;
 `;
 
@@ -12,6 +12,13 @@ const ContentBlock = styled.div`
   margin: 0 auto;
   padding: 0 20px;
   text-align: center;
+`;
+
+const FullWidthCarouselSection = styled.div`
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  background-color: #f8f9fa;
+  padding: 40px 0 80px 0;
 `;
 
 const SectionTitleHolder = styled.div`
@@ -70,31 +77,44 @@ const AboutText = styled.div`
 
 const TeamSliderWrapper = styled.div`
   position: relative;
-  margin-top: 40px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 `;
 
 const TeamSlider = styled.div`
   overflow: hidden;
+  width: 100%;
 `;
 
-const TeamSlides = styled.div<{ $currentSlide: number }>`
+const TeamSlides = styled.div<{ $currentSlide: number; $isTransitioning: boolean }>`
   display: flex;
-  transition: transform 0.5s ease;
+  transition: ${props => props.$isTransitioning ? 'transform 0.5s ease' : 'none'};
   transform: translateX(-${props => props.$currentSlide * 100}%);
 `;
 
 const TeamSlide = styled.div`
   min-width: 100%;
   display: flex;
-  background: white;
-  border-radius: 12px;
-  padding: 30px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background: transparent;
+  padding: 40px 60px;
+  gap: 40px;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 30px 20px;
+    gap: 30px;
+  }
 `;
 
 const MemberContentHolder = styled.div`
   flex: 2;
-  padding-right: 30px;
+  text-align: left;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `;
 
 const MemberName = styled.h4`
@@ -131,11 +151,17 @@ const MemberImageHolder = styled.div`
 `;
 
 const MemberImage = styled.img`
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   object-fit: cover;
-  border-radius: 15px;
-  border: 4px solid #e64b77;
+  border-radius: 50%;
+  border: 5px solid #e64b77;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    width: 200px;
+    height: 200px;
+  }
 `;
 
 const SliderControls = styled.div`
@@ -164,30 +190,39 @@ const NavButton = styled.button`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: #e64b77;
+  background: rgba(230, 75, 119, 0.9);
   color: white;
   border: none;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 
   &:hover {
     background: #d63a65;
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  @media (max-width: 768px) {
+    width: 45px;
+    height: 45px;
+    font-size: 16px;
   }
 `;
 
 const NextButton = styled(NavButton)`
-  right: 20px;
+  right: 30px;
 `;
 
 const BackButton = styled(NavButton)`
-  left: 20px;
+  left: 30px;
 `;
 
 interface TeamMember {
@@ -256,19 +291,54 @@ const teamMembers: TeamMember[] = [
 interface AboutSectionProps {}
 
 const AboutSection: React.FC<AboutSectionProps> = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(1); // Start at 1 (first real slide)
+  const [isTransitioning, setIsTransitioning] = useState(true);
+
+  // Create slides with clones for infinite effect
+  // Structure: [lastSlide_clone, slide1, slide2, ..., slideN, firstSlide_clone]
+  const infiniteSlides = [
+    teamMembers[teamMembers.length - 1], // Clone of last slide at beginning
+    ...teamMembers, // All real slides
+    teamMembers[0] // Clone of first slide at end
+  ];
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % teamMembers.length);
+    if (!isTransitioning) return;
+    setCurrentSlide(prev => prev + 1);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + teamMembers.length) % teamMembers.length);
+    if (!isTransitioning) return;
+    setCurrentSlide(prev => prev - 1);
   };
 
   const goToSlide = (index: number) => {
-    setCurrentSlide(index);
+    if (!isTransitioning) return;
+    setCurrentSlide(index + 1); // +1 because of clone at beginning
   };
+
+  // Handle infinite loop by jumping to real slides when reaching clones
+  const handleTransitionEnd = () => {
+    if (currentSlide === 0) {
+      // At clone of last slide (beginning), jump to real last slide
+      setIsTransitioning(false);
+      setCurrentSlide(teamMembers.length);
+    } else if (currentSlide === infiniteSlides.length - 1) {
+      // At clone of first slide (end), jump to real first slide
+      setIsTransitioning(false);
+      setCurrentSlide(1);
+    }
+  };
+
+  // Re-enable transitions after instant jump
+  useEffect(() => {
+    if (!isTransitioning) {
+      const timer = setTimeout(() => {
+        setIsTransitioning(true);
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [isTransitioning]);
 
   return (
     <Section id="about">
@@ -295,11 +365,18 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
               <strong>WHACK ·</strong> <em>Build projects, have fun, be creative, break, learn, and ask questions in a space that celebrates diversity</em>
             </div>
           </AboutText>
+        </SectionContentHolder>
+      </ContentBlock>
 
-          <TeamSliderWrapper>
+      <FullWidthCarouselSection>
+        <TeamSliderWrapper>
             <TeamSlider>
-              <TeamSlides $currentSlide={currentSlide}>
-                {teamMembers.map((member, index) => (
+              <TeamSlides
+                $currentSlide={currentSlide}
+                $isTransitioning={isTransitioning}
+                onTransitionEnd={handleTransitionEnd}
+              >
+                {infiniteSlides.map((member, index) => (
                   <TeamSlide key={index}>
                     <MemberContentHolder>
                       <MemberName>{member.name}</MemberName>
@@ -334,14 +411,13 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
               {teamMembers.map((_, index) => (
                 <SliderButton
                   key={index}
-                  active={index === currentSlide}
+                  active={index === currentSlide - 1} // -1 because currentSlide accounts for clone at beginning
                   onClick={() => goToSlide(index)}
                 />
               ))}
             </SliderControls>
           </TeamSliderWrapper>
-        </SectionContentHolder>
-      </ContentBlock>
+      </FullWidthCarouselSection>
     </Section>
   );
 };
