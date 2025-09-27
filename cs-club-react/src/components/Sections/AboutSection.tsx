@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Section = styled.div`
   background-color: #f8f9fa;
@@ -79,7 +80,7 @@ const AboutText = styled.div`
 const TeamSliderWrapper = styled.div`
   position: relative;
   width: 100%;
-  padding: 60px 0 80px 0;
+  padding: 40px 0 60px 0;
 `;
 
 const TeamSlider = styled.div`
@@ -89,7 +90,7 @@ const TeamSlider = styled.div`
 
 const TeamSlides = styled.div<{ $currentSlide: number; $isTransitioning: boolean }>`
   display: flex;
-  transition: ${props => props.$isTransitioning ? 'transform 0.5s ease' : 'none'};
+  transition: ${props => props.$isTransitioning ? 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none'};
   transform: translateX(-${props => props.$currentSlide * 100}%);
 `;
 
@@ -103,6 +104,20 @@ const TeamSlide = styled.div`
   justify-content: center;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 60%;
+    background: #1e3a8a;
+    border-radius: 24px 24px 0 0;
+    z-index: 1;
+  }
 
   @media (max-width: 1200px) {
     padding: 40px 60px;
@@ -119,35 +134,60 @@ const TeamSlide = styled.div`
 const MemberContentHolder = styled.div`
   flex: 2;
   text-align: left;
+  padding: 0 0 80px 160px;
+  z-index: 2;
+  position: relative;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 
   @media (max-width: 768px) {
     text-align: center;
+    padding: 0 50px 50px 80px;
+    min-height: 250px;
   }
 `;
 
 const MemberName = styled.h4`
-  font-size: 24px;
+  font-size: 48px;
   font-weight: 700;
-  color: #23214c;
-  margin: 0 0 10px 0;
+  color: white;
+  margin: 0 0 15px 0;
 `;
 
-const MemberPosition = styled.p`
-  font-size: 14px;
-  font-weight: 600;
-  color: #e64b77;
+const MemberPosition = styled(motion.p)`
+  font-size: 60px;
+  font-weight: 700;
+  color: #000;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin: 0 0 20px 0;
+  position: absolute;
+  bottom: -40px;
+  left: 25%;
+  transform: translateX(-50%);
+  width: 50%;
+  text-align: center;
+  z-index: 0;
+  white-space: nowrap;
 `;
 
 const MemberContent = styled.div`
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.6;
-  color: #555;
+  color: white;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 
   p {
     margin: 0;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
   }
 `;
 
@@ -155,20 +195,27 @@ const MemberImageHolder = styled.div`
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding: 130px 120px 80px 0;
+  z-index: 2;
+  position: relative;
+
+  @media (max-width: 768px) {
+    padding: 90px 50px 50px 50px;
+  }
 `;
 
 const MemberImage = styled.img`
-  width: 250px;
-  height: 250px;
+  width: 350px;
+  height: 420px;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 24px;
   border: 5px solid #e64b77;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 768px) {
-    width: 200px;
-    height: 200px;
+    width: 280px;
+    height: 336px;
   }
 `;
 
@@ -287,7 +334,7 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: 'Elizabeth Yan',
-    position: 'CO-WEB WIZARD (WWW)',
+    position: 'WEB WIZARD',
     class: '2026',
     major: 'Computer Science, Mathematics',
     minor: 'Philosophy (unofficially)',
@@ -296,7 +343,7 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: 'Sophie Lin',
-    position: 'CO-WEB WIZARD (WWW)',
+    position: 'WEB WIZARD',
     class: '2027',
     major: 'Computer Science',
     description: "hello! i'm sophie and i'm super excited to be co-www this year! I'm interested in the use of machine learning in a musical context and the ethical implications surrounding it. In my free time, I enjoy playing percussion, bouldering, and exploring boston for good matcha!",
@@ -309,6 +356,7 @@ interface AboutSectionProps {}
 const AboutSection: React.FC<AboutSectionProps> = () => {
   const [currentSlide, setCurrentSlide] = useState(1); // Start at 1 (first real slide)
   const [isTransitioning, setIsTransitioning] = useState(true);
+  const [animationKey, setAnimationKey] = useState(0);
 
   // Create slides with clones for infinite effect
   // Structure: [lastSlide_clone, slide1, slide2, ..., slideN, firstSlide_clone]
@@ -321,16 +369,19 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
   const nextSlide = () => {
     if (!isTransitioning) return;
     setCurrentSlide(prev => prev + 1);
+    setAnimationKey(prev => prev + 1);
   };
 
   const prevSlide = () => {
     if (!isTransitioning) return;
     setCurrentSlide(prev => prev - 1);
+    setAnimationKey(prev => prev + 1);
   };
 
   const goToSlide = (index: number) => {
     if (!isTransitioning) return;
     setCurrentSlide(index + 1); // +1 because of clone at beginning
+    setAnimationKey(prev => prev + 1);
   };
 
   // Handle infinite loop by jumping to real slides when reaching clones
@@ -396,7 +447,21 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
                   <TeamSlide key={index}>
                     <MemberContentHolder>
                       <MemberName>{member.name}</MemberName>
-                      <MemberPosition>{member.position}</MemberPosition>
+                      {index === currentSlide && (
+                        <MemberPosition
+                          key={animationKey}
+                          initial={{ y: -150, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          transition={{
+                            type: "spring",
+                            stiffness: 120,
+                            damping: 18,
+                            delay: 1.0
+                          }}
+                        >
+                          {member.position}
+                        </MemberPosition>
+                      )}
                       <MemberContent>
                         <p>
                           Class: {member.class}<br />
