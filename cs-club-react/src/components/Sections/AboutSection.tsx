@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const Section = styled.div`
-  padding: 80px 0 0 0;
   background-color: #f8f9fa;
 `;
 
@@ -10,7 +9,7 @@ const ContentBlock = styled.div`
   width: 1170px;
   max-width: 100%;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 80px 20px 40px 20px;
   text-align: center;
 `;
 
@@ -18,7 +17,9 @@ const FullWidthCarouselSection = styled.div`
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   background-color: #f8f9fa;
-  padding: 40px 0 80px 0;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 `;
 
 const SectionTitleHolder = styled.div`
@@ -78,8 +79,7 @@ const AboutText = styled.div`
 const TeamSliderWrapper = styled.div`
   position: relative;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 60px 0 80px 0;
 `;
 
 const TeamSlider = styled.div`
@@ -97,9 +97,17 @@ const TeamSlide = styled.div`
   min-width: 100%;
   display: flex;
   background: transparent;
-  padding: 40px 60px;
-  gap: 40px;
+  padding: 40px;
+  gap: 60px;
   align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (max-width: 1200px) {
+    padding: 40px 60px;
+    gap: 40px;
+  }
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -218,11 +226,19 @@ const NavButton = styled.button`
 `;
 
 const NextButton = styled(NavButton)`
-  right: 30px;
+  right: 5%;
+
+  @media (max-width: 768px) {
+    right: 20px;
+  }
 `;
 
 const BackButton = styled(NavButton)`
-  left: 30px;
+  left: 5%;
+
+  @media (max-width: 768px) {
+    left: 20px;
+  }
 `;
 
 interface TeamMember {
