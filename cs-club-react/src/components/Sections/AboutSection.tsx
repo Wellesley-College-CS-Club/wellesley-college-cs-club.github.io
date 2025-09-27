@@ -160,9 +160,8 @@ const SliderButton = styled.button<{ active?: boolean }>`
   }
 `;
 
-const NextButton = styled.button`
+const NavButton = styled.button`
   position: absolute;
-  right: 20px;
   top: 50%;
   transform: translateY(-50%);
   background: #e64b77;
@@ -181,6 +180,14 @@ const NextButton = styled.button`
   &:hover {
     background: #d63a65;
   }
+`;
+
+const NextButton = styled(NavButton)`
+  right: 20px;
+`;
+
+const BackButton = styled(NavButton)`
+  left: 20px;
 `;
 
 interface TeamMember {
@@ -255,6 +262,10 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
     setCurrentSlide((prev) => (prev + 1) % teamMembers.length);
   };
 
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + teamMembers.length) % teamMembers.length);
+  };
+
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
   };
@@ -310,6 +321,10 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
                 ))}
               </TeamSlides>
             </TeamSlider>
+
+            <BackButton onClick={prevSlide}>
+              ←
+            </BackButton>
 
             <NextButton onClick={nextSlide}>
               →

@@ -38,6 +38,7 @@ const SectionContentHolder = styled.div`
 `;
 
 const SliderWrapper = styled.div`
+  position: relative;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
@@ -106,6 +107,41 @@ const SliderButton = styled.button<{ active?: boolean }>`
   &:hover {
     background-color: #ffbb42;
   }
+`;
+
+const NavButton = styled.button`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #ffbb42;
+  color: white;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  z-index: 10;
+
+  &:hover {
+    background: #e6a435;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const NextButton = styled(NavButton)`
+  right: -20px;
+`;
+
+const BackButton = styled(NavButton)`
+  left: -20px;
 `;
 
 interface Resource {
@@ -237,6 +273,14 @@ interface ResourceSectionProps {}
 const ResourceSection: React.FC<ResourceSectionProps> = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % resourceSlides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + resourceSlides.length) % resourceSlides.length);
+  };
+
   return (
     <Section id="resource">
       <ContentBlock>
@@ -249,6 +293,10 @@ const ResourceSection: React.FC<ResourceSectionProps> = () => {
 
         <SectionContentHolder>
           <SliderWrapper>
+            <BackButton onClick={prevSlide}>
+              ←
+            </BackButton>
+
             {resourceSlides[currentSlide].map((resource, index) => (
               <ServiceHolder key={index}>
                 <ServiceIcon src={resource.icon} alt="" />
@@ -264,6 +312,10 @@ const ResourceSection: React.FC<ResourceSectionProps> = () => {
                 </ServiceContent>
               </ServiceHolder>
             ))}
+
+            <NextButton onClick={nextSlide}>
+              →
+            </NextButton>
           </SliderWrapper>
 
           <SliderControls>
