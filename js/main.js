@@ -1,3 +1,4 @@
+
 jQuery(document).ready(function () {
 
     jQuery(".section-title-holder").stick_in_parent({offset_top: 64}).on("sticky_kit:stick", function (e) {
