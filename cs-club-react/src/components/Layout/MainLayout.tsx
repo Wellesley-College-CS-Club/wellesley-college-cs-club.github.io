@@ -1,7 +1,7 @@
 import React from 'react';
 import Navigation from '../Navigation/Navigation';
 import HomeSection from '../Sections/HomeSection';
-import NewsSection from '../Sections/NewsSection';
+import CalendarSection from '../Sections/CalendarSection';
 import ResourceSection from '../Sections/ResourceSection';
 import AboutSection from '../Sections/AboutSection';
 import QOWSection from '../Sections/QOWSection';
@@ -13,7 +13,7 @@ const MainLayout: React.FC = () => {
     <>
       <Navigation />
       <HomeSection />
-      <NewsSection />
+      <CalendarSection />
       <ResourceSection />
       <AboutSection />
       <QOWSection />

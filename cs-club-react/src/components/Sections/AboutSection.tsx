@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const Section = styled.div`
   background-color: #f8f9fa;
@@ -134,19 +134,15 @@ const TeamSlide = styled.div`
 const MemberContentHolder = styled.div`
   flex: 2;
   text-align: left;
-  padding: 0 0 80px 160px;
+  padding: 0 0 120px 160px; 
   z-index: 2;
   position: relative;
-  min-height: 300px;
+
+  min-height: 420px;  
+
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-
-  @media (max-width: 768px) {
-    text-align: center;
-    padding: 0 50px 50px 80px;
-    min-height: 250px;
-  }
 `;
 
 const MemberName = styled.h4`
@@ -164,7 +160,7 @@ const MemberPosition = styled(motion.p)`
   letter-spacing: 1px;
   margin: 0 0 20px 0;
   position: absolute;
-  bottom: -40px;
+  bottom: -10px;
   left: 25%;
   transform: translateX(-50%);
   width: 50%;
@@ -293,7 +289,7 @@ interface TeamMember {
   position: string;
   class: string;
   major: string;
-  minor?: string;
+  hometown: string;
   description: string;
   image: string;
 }
@@ -304,7 +300,9 @@ const teamMembers: TeamMember[] = [
     position: 'CO-PRESIDENT',
     class: '2026',
     major: 'Computer Science and Mathematics',
+    hometown: "",
     description: "Hey everyone!~~ I'm Claire, and I'm a junior studying CS & Math 👩🏻‍💻🧮. I'm super interested in creating innovative software and exploring anything AI/ML-related! On campus, I'm involved in CS Club 🤗, WES, and WADO. Outside of academics, I love experimenting with new baking recipes 🍪🍰, discovering unique cafes and restaurants 🍵🍱, and exploring late-night Boston!",
+
     image: '/assets/team/2425/claire_cao.JPG'
   },
   {
@@ -312,42 +310,149 @@ const teamMembers: TeamMember[] = [
     position: 'CO-PRESIDENT',
     class: '2026',
     major: 'Computer Science and Mathematics',
-    description: "Hi everyone! I'm Annie :) I like to crochet, rock climb, read (hopefully more this year), and find yummy food places around Boston. My academic interests lie in CV and ML, as well as the ethics of technology. Excited for all of the events/opportunities we have planned for this year!",
-    image: '/assets/team/2324/annie_chen.jpg'
+    hometown: "",
+    description: "Outside of school, I love photography, climbing, and listening to true crime podcasts! On the CS side, I enjoy working with data and exploring the applications and ethics of machine learning, and I’m currently doing research in the MOGU Lab.",
+
+    image: '/assets/team/2526/AnnieChen.jpg'
   },
   {
-    name: 'Becky Chen',
-    position: 'CO-WORKSHOP CHAIR',
-    class: '2025',
-    major: 'Computer Science, Psychology',
-    description: 'I like playing escape room/mystery games like Rusty Lake!',
-    image: '/assets/team/2324/becky_chen.jpg'
-  },
-  {
-    name: 'Diya Khanna',
-    position: 'CO-WORKSHOP CHAIR',
-    class: '2025',
-    major: 'Computer Science',
-    minor: 'Psychology',
-    description: "Hi! My name is Diya. I am so excited to be working as Co-Workshop Chair this year with Becky. I'm a senior majoring in CS and minoring in Psychology. Home for me is Delhi, India. If I am not fixing bugs in my code, you can find me exploring new food spots in the city, watching telenovelas or playing badminton :)",
-    image: '/assets/team/2425/Diya_Khanna.jpg'
-  },
-  {
-    name: 'Elizabeth Yan',
-    position: 'WEB WIZARD',
+    name: 'Cayla Gililland',
+    position: 'TREASURER',
     class: '2026',
-    major: 'Computer Science, Mathematics',
-    minor: 'Philosophy (unofficially)',
-    description: "Hello, I'm Elizabeth! In my free time, I enjoy dancing, writing, buying clothes, and overdosing on sugar. My guilty pleasures (or not so much guilty as they are embarrassing) are doing logic-based problems and keeping my Github contribution graph green (it is not going too well sadly 😿). I'm super excited to get to know everyone in CS Club this year!",
-    image: '/assets/team/2425/Elizabeth_Yan.JPG'
+    major: 'CS + Philosophy minor',
+    hometown: "Cheyenne, Wyoming",
+    description: "I'm a senior majoring in CS.",
+
+    image: '/assets/team/2526/CaylaGililland.jpg'
+  },
+  {
+    name: 'Aadya Nishtha',
+    position: 'TREASURER',
+    class: '2028',
+    major: 'Computer Science and Economics',
+    hometown: "Singapore",
+    description: "I'm a sophomore interested in ML, and I'm excited to be a returning treasurer for CS club this year! I'm excited for our upcoming events such as big-little, as it was one of my favourite memories with CS club, along with our Professor Tea's. In my free time, I love testing new AI chatbots, drawing, and occasionally reading (rarely). ",
+
+    image: '/assets/team/2526/AadyaNishtha.PNG'
+  },
+  {
+    name: 'Ashley Sheng',
+    position: 'CO-SOCIAL CHAIR',
+    class: '2026',
+    major: 'Computer Science and Math',
+    hometown: "Sugar Land, Texas",
+    description: "I'm a senior interested in formal methods, and I'm excited to organize more events where CS students can connect. In my free time, I like watching sitcoms and doing yoga.",
+    image: '/assets/team/2526/AshleySheng.jpeg'
+  },
+  {
+    name: 'Hana Takatori',
+    position: 'CO-SOCIAL CHAIR',
+    class: '2028',
+    major: 'Computer Science and Economics',
+    hometown: "Tokyo, Japan",
+    description: "I'm a sophomore interested in the intersection of health care and technology, and I'm so excited to be serving as CS Club's co-social chair this year! In my free time, I love drinking boba and do puzzle games. I'm doing UROP at Senseable City Lab this semester.  ",
+
+    image: '/assets/team/2526/HanaTakatori.jpeg'
+  },
+  {
+    name: 'Karen Xiao',
+    position: 'CO-NETWORKING',
+    class: '2026',
+    major: 'Computer Science & Math',
+    hometown: "Philadelphia, PA",
+    description: "I'm a senior interested in CS research at the intersection of HCI, learning sciences, and data science and I'm so excited to be co-networking chair again this year! In my free time I love going into Boston and hanging out with friends :)",
+
+    image: '/assets/team/2526/KarenXiao.JPG'
+  },
+  {
+    name: 'Grace Jiang',
+    position: 'CO-NETWORKING',
+    class: '2026',
+    major: 'Computer Science and Economics',
+    hometown: "San Jose, CA",
+    description: "Hi! I'm Grace, a senior majoring in CS and Econ. I'm originally from California, but I'm moving to NYC next year for work! :) In my free time, I love sewing and trying new restaurants.",
+
+    image: '/assets/team/2526/GraceJiang.jpg'
+  },
+  {
+    name: 'Nessa Tong',
+    position: 'CO-PUBLICITY CHAIR',
+    class: '2027',
+    major: 'Computer Science and Physics',
+    hometown: "Fremont, CA",
+    description: "I'm a junior interested in algorithms and machine learning, and I'm excited to spend another year as CS Club's pub chair! I look forward to meeting everyone at our events (and getting free boba... stay tuned...). Outside of school, I love trying new restaurants, going to concerts, and taking long walks.",
+
+    image: '/assets/team/2526/NessaTong.jpg'
+  },
+  {
+    name: 'Aileen Du',
+    position: 'CO-PUBLICITY CHAIR',
+    class: '2027',
+    major: 'Computer Science and Music/Math',
+    hometown: "Auckland, New Zealand",
+    description: "I'm a junior interested in software engineering, and I'm excited to serve as the co-pub chair this year alongside Nessa! Outside of academics, I am a part of the golf team and the Blue Notes a cappella group. ",
+
+    image: '/assets/team/2526/AileenDu.jpg'
   },
   {
     name: 'Sophie Lin',
     position: 'WEB WIZARD',
     class: '2027',
+    major: 'Computer Science & Math minor',
+    hometown: "",
+    description: "hello everyone! I'm Sophie :) My academic interests mainly lie in the field of machine learning, particularly (ethical) music AI, but I'm also interested in full-stack web dev and agentic AI! In my free time, I love to learning new pieces on the marimba, make my own matcha, or explore boston for the best boba! ",
+
+    image: '/assets/team/2526/SophieLin.jpg'
+  },
+  {
+    name: 'Bessie Li',
+    position: 'CO-WORKSHOP CHAIR',
+    class: '2027',
     major: 'Computer Science',
-    description: "hello! i'm sophie and i'm super excited to be co-www this year! I'm interested in the use of machine learning in a musical context and the ethical implications surrounding it. In my free time, I enjoy playing percussion, bouldering, and exploring boston for good matcha!",
-    image: '/assets/team/2425/Sophie_Lin.jpg'
+    hometown: "Boston, MA",
+    description: "I'm a junior interested in bioinformatics, and I'm so excited to be serving as CS Club's Co-Workshop Chair this year! I'm super excited for all of our upcoming events. In my free time, I love eating food and listening to music.",
+
+    image: '/assets/team/2526/BessieLi.jpg'
+  },
+  {
+    name: 'Felix Holmes',
+    position: 'CO-WORKSHOP CHAIR',
+    class: '2027',
+    major: 'Computer Science and Philosophy',
+    hometown: "Bartlesville, OK",
+    description: "i'm a junior in cs + philosophy, and i'm excited to be serving as co-workshop chair this year! in my free time, i like to read!",
+
+    image: '/assets/team/2526/temp.png'
+  },
+  {
+    name: 'Grace Wang',
+    position: 'SECRETARY',
+    class: '2028',
+    major: 'Computer Science and Economics',
+    hometown: "San Diego, CA",
+    description: "I'm a sophomore interested in AI in fintech and cybersecurity. I'm very excited to be joining CS club as secretary this year! In my free time love to nordic ski. I also love to watch food videos, try new foods, and rating them on my Beli (follow @gswagon)! ",
+
+    image: '/assets/team/2526/GraceWang.jpg'
+  },
+  {
+    name: 'Rue Huang',
+    position: 'CO-FIRST YEAR REP',
+    class: '2029',
+    major: 'Undecided',
+    hometown: "Shenzhen, China",
+    description: "I’m a freshman interested in product management and will be serving as one of the Co–First-Year Reps this year! I’m super excited for all the upcoming events—especially the first-year bonding activities and alumni panels. In my free time, I love being outdoors, doing all kinds of sports, and playing guitar!",
+
+    image: '/assets/team/2526/RueHuang.jpg'
+  },
+  {
+    name: 'Kalei Kieu',
+    position: 'CO-FIRST YEAR REP',
+    class: '2029',
+    major: 'Prospectivve Computer Science',
+    hometown: "Scarborough, ME",
+    description: "I'm a freshman interested in CS and specifically the societal impacts that technology (such as AI) can have on communities! I'm really excited to be involved with CS Club this year and I look forward to meeting/getting along with my fellow first-years through the events we have planned this year :)! My other interests include reading, playing video games, and painting!",
+
+    image: '/assets/team/2526/KaleiKieu.png'
   }
 ];
 
@@ -410,29 +515,12 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
   return (
     <Section id="about">
       <ContentBlock>
-        <SectionTitleHolder className="section-title-holder">
+
           <SectionNum>
             <span>03</span>
           </SectionNum>
-          <EntryTitle>ABOUT</EntryTitle>
-        </SectionTitleHolder>
+          <EntryTitle>Meet the Team!</EntryTitle>
 
-        <SectionContentHolder>
-          <ContentTitleHolder>
-            <ContentTitle>About</ContentTitle>
-          </ContentTitleHolder>
-
-          <AboutText>
-            <div className="one-half">
-              Wellesley CS Club is established to provide a forum for events within the CS major/minor community and to provide opportunities for enrichment through tech-related events
-            </div>
-            <div className="one-half">
-              <strong>WORKSHOPS ·</strong> <em>Explore industry related workshops/job opportunities</em><br />
-              <strong>SOCIAL EVENTS ·</strong> <em>Connect with other CS/MAS students and professors to build a stronger community among ourselves</em><br />
-              <strong>WHACK ·</strong> <em>Build projects, have fun, be creative, break, learn, and ask questions in a space that celebrates diversity</em>
-            </div>
-          </AboutText>
-        </SectionContentHolder>
       </ContentBlock>
 
       <FullWidthCarouselSection>
@@ -466,7 +554,6 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
                         <p>
                           Class: {member.class}<br />
                           Major: {member.major}
-                          {member.minor && <><br />Minor: {member.minor}</>}
                           <br /><br />
                           {member.description}
                         </p>

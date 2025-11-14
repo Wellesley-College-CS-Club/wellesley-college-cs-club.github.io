@@ -85,18 +85,6 @@ const Navigation: React.FC<NavigationProps> = () => {
           </MenuItem>
           <MenuItem>
             <MenuLink
-              href="#news"
-              $color="#fff"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection('news');
-              }}
-            >
-              News
-            </MenuLink>
-          </MenuItem>
-          <MenuItem>
-            <MenuLink
               href="#resource"
               $color="#fff"
               onClick={(e) => {
