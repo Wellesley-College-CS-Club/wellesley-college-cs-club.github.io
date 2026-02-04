@@ -17,7 +17,6 @@
         <link rel="stylesheet" type="text/css"  href='css/prettyPhoto.css' />
         <link rel="stylesheet" type="text/css"  href='css/sm-clean.css' />
         <link rel="stylesheet" type="text/css"  href='style.css' />
-     
 
         <!--[if lt IE 9]>
                 <script src="js/html5.js"></script>
@@ -59,7 +58,7 @@
 
         <div id="home" class="section intro-page">
             <div class="block content-1170 center-relative center-text">
-                <img class="top-logo" src="csclublogo.png" style ="height: 400wv" alt="Boxus" />
+                <img class="top-logo" src="csclublogo.png" style ="height: auto; width: 15vh" alt="Boxus" />
                 <br>
                 <h1 class="big-title">Wellesley College <span>Computer Science Club</span></h1>
                 <!-- <p class="title-desc">2019-2020</p> -->
@@ -532,7 +531,7 @@
         index = 1;
         slides.style.transform = `translateX(-${slideWidth * index}%)`;
       }
-      if (slides.children[index].textContent.includes('Elizabeth Yan') && index === 0) {
+      if (slides.children[index].textContent.includes('Sophie Lin') && index === 0) {
         slides.style.transition = 'none';
         index = slideCount - 2;
         slides.style.transform = `translateX(-${slideWidth * index}%)`;
