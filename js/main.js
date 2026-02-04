@@ -1,14 +1,14 @@
 jQuery(document).ready(function () {
 
-    jQuery(".section-title-holder").stick_in_parent({offset_top: 64}).on("sticky_kit:stick", function (e) {
-        jQuery('.menu-wrapper, .menu-wrapper .sub-menu').css('backgroundColor', jQuery(this).css("backgroundColor"));
-        jQuery('.menu-wrapper a, .mob-menu').css('color', jQuery(this).find('.section-num span').css("color"));
-    });
-
-    jQuery(".section-title-holder").stick_in_parent({offset_top: 64}).on("sticky_kit:unbottom", function (e) {
-        jQuery('.menu-wrapper, .menu-wrapper .sub-menu').css('backgroundColor', jQuery(this).css("backgroundColor"));
-        jQuery('.menu-wrapper a, .mob-menu').css('color', jQuery(this).find('.section-num span').css("color"));
-    });
+    /* Header stays static — no color change on scroll */
+    // jQuery(".section-title-holder").stick_in_parent({offset_top: 64}).on("sticky_kit:stick", function (e) {
+    //     jQuery('.menu-wrapper, .menu-wrapper .sub-menu').css('backgroundColor', jQuery(this).css("backgroundColor"));
+    //     jQuery('.menu-wrapper a, .mob-menu').css('color', jQuery(this).find('.section-num span').css("color"));
+    // });
+    // jQuery(".section-title-holder").stick_in_parent({offset_top: 64}).on("sticky_kit:unbottom", function (e) {
+    //     jQuery('.menu-wrapper, .menu-wrapper .sub-menu').css('backgroundColor', jQuery(this).css("backgroundColor"));
+    //     jQuery('.menu-wrapper a, .mob-menu').css('color', jQuery(this).find('.section-num span').css("color"));
+    // });
 
 
     //Placeholder show/hide
@@ -272,7 +272,8 @@ jQuery(window).load(function () {
     });
 
 
-    jQuery('.section-title-holder').trigger("sticky_kit:recalc");
+    /* No sticky section headers — simple scrolling */
+    // jQuery('.section-title-holder').trigger("sticky_kit:recalc");
 
     jQuery('.doc-loader').fadeOut('fast');
 });
