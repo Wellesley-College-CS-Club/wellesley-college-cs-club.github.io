@@ -4,14 +4,14 @@ body
     font-size: 16px;
     line-height: 26px;
     font-weight: 400;
-    color: #23214c;    
+    color: #16325b;    
 }
 
 
 body a
 {
     text-decoration: none;
-    color: #23214c;
+    color: #16325b;
     transition: color .2s linear;
 }
 
@@ -69,7 +69,7 @@ body a:hover
 {    
     transition: background-color .2s linear;
     z-index: 99 !important;
-    background-color: #221C5A;
+    background-color: #16325b;
     width: 100% !important;
     top: 0;
     position: fixed;
@@ -140,6 +140,7 @@ body a:hover
 {    
     position: relative;
     z-index: 1;
+    color: #16325b;
 }
 
 .section-num
@@ -283,7 +284,7 @@ body a:hover
     text-transform: uppercase;
     margin-top: -75px;
     margin-bottom: 30px;
-    color: #221c5a;    
+    color: #16325b;    
 }
 
 .extra-content-left
@@ -328,7 +329,7 @@ body a:hover
 {
     padding-bottom: 170px;
     min-height: calc(100vh - 170px);
-    background-color: #221c5a; 
+    background-color: #16325b; 
     /* background-image:url(demo-images/background_img_01b.jpg);  */
     background-repeat: repeat; 
     background-position: center top; 
@@ -407,7 +408,7 @@ h2.sub-title
 
 #resource
 {
-    background-color: #221c5a;
+    background-color: #16325b;
     z-index: 8;
 }
 
@@ -457,7 +458,7 @@ h2.sub-title
 
 #more
 {
-    background-color: #221C5A; 
+    background-color: #16325b; 
     /* background-image: url("demo-images/background_img_02.jpg");  */
     background-repeat: no-repeat; 
     background-position: center top; 
@@ -654,7 +655,7 @@ div.pp_default .pp_loaderIcon
 
 #about
 {
-    background-color: rgb(34, 28, 90); 
+    background-color: #16325b; 
     /* background-image: url("demo-images/background_img_03.jpg");  */
     background-repeat: no-repeat; 
     background-position: center top; 
@@ -729,7 +730,7 @@ div.pp_default .pp_loaderIcon
 
 #news
 {
-    background-color: rgb(34, 28, 90); 
+    background-color: #16325b; 
     /* background-image: url("demo-images/background_img_04.jpg");  */
     background-repeat: no-repeat; 
     background-position: center center; 
@@ -840,7 +841,7 @@ div.pp_default .pp_loaderIcon
 
 #video
 {
-    background-color: rgb(34, 28, 90); 
+    background-color: #16325b; 
     background-image: url("demo-images/background_img_06.jpg"); 
     background-repeat: repeat-x; 
     background-position: center center; 
@@ -900,7 +901,7 @@ a.video-popup-holder:hover img.popup-play
 
 #skills
 {
-    background-color: rgb(34, 28, 90); 
+    background-color: #16325b; 
     background-image: url("demo-images/item_background_01.jpg"); 
     background-repeat: no-repeat; 
     background-position: left top; 
@@ -988,7 +989,7 @@ a.video-popup-holder:hover img.popup-play
     font-size: 16px;
     line-height: 26px;
     font-weight: 400;
-    color: #23214c;
+    color: #16325b;
     overflow-wrap: break-word;
     width: 100%; 
     word-wrap: break-word;   
@@ -1002,7 +1003,7 @@ a.video-popup-holder:hover img.popup-play
 
 #contact
 {
-    background-color: rgb(34, 28, 90); 
+    background-color: #16325b; 
     /* background-image: url("demo-images/background_img_05b.jpg");  */
     background-repeat: no-repeat; 
     background-position: center top; 
@@ -1060,7 +1061,7 @@ p.custom-field-class
 
 .contact-form input[type=text], .contact-form input[type=email], .contact-form textarea
 {
-    color: #23214c;
+    color: #16325b;
     border: 0;
     border-bottom: 1px solid #1c1c1c;
     height: 28px;    
@@ -1075,7 +1076,7 @@ p.custom-field-class
 .contact-form input[type=text]::-webkit-input-placeholder, .contact-form input[type=email]::-webkit-input-placeholder, .contact-form textarea::-webkit-input-placeholder
 {
     font-family: 'Roboto', sans-serif;
-    color: #23214c;
+    color: #16325b;
     font-weight: 400;
     font-size: 16px;
     line-height: 25px;
@@ -1083,7 +1084,7 @@ p.custom-field-class
 .contact-form input[type=text]::-moz-placeholder, .contact-form input[type=email]::-moz-placeholder, .contact-form textarea::-moz-placeholder
 {
     font-family: 'Roboto', sans-serif;
-    color: #23214c;
+    color: #16325b;
     font-weight: 400;
     font-size: 16px;
     line-height: 25px;
@@ -1092,7 +1093,7 @@ p.custom-field-class
 .contact-form input[type=text]:-ms-input-placeholder, .contact-form input[type=email]:-ms-input-placeholder, .contact-form textarea:-ms-input-placeholder
 {
     font-family: 'Roboto', sans-serif;
-    color: #23214c;
+    color: #16325b;
     font-weight: 400;
     font-size: 16px;
     line-height: 25px;
@@ -1100,7 +1101,7 @@ p.custom-field-class
 .contact-form input[type=text]:-moz-placeholder, .contact-form input[type=email]:-moz-placeholder, .contact-form textarea:-moz-placeholder
 {
     font-family: 'Roboto', sans-serif;
-    color: #23214c;
+    color: #16325b;
     font-weight: 400;
     font-size: 16px;
     line-height: 25px;
@@ -1181,7 +1182,7 @@ span.contact-form-not-valid-tip
 
 footer
 {
-    background-color: #221C5A;
+    background-color: #16325b;
 }
 
 .footer
@@ -1223,7 +1224,7 @@ footer
 
 #portfolio-1
 {
-    background-color: #221c5a;
+    background-color: #16325b;
     background-image:url("demo-images/background_img_05b.jpg"); 
     background-repeat: no-repeat;
     background-position: center top;
@@ -1233,7 +1234,7 @@ footer
 #portfolio-2
 {
 
-    background-color: #221c5a;
+    background-color: #16325b;
     background-image: url(demo-images/item_background_01.jpg);
     background-repeat: no-repeat;
     background-position: left top;
@@ -1262,7 +1263,7 @@ footer
 {
     top: -60px;
     right: -60px;
-    background-color: #26276d;
+    background-color: #16325b;
     line-height: 0;
     font-size: 0;
     width: 60px;

@@ -35,7 +35,7 @@
         </table>
 
         <!-- Menu -->
-        <div class="menu-wrapper center-relative">
+        <div class="menu-wrapper center-relative" style = "color:#16325b">
             <nav id="header-main-menu">
                 <div class="mob-menu">MENU</div>
                 <ul class="main-menu sm sm-clean">
@@ -68,8 +68,8 @@
         <!-- Calendar -->
         <div id="calendar" style="padding: 60px 0px;" class="section">
                 <div class="block content-1170 center-relative center-text">  
-                    <h2 class="sub-title" style="padding: 60px 0px 60px; color:#221c5a; font-size:70px;">Calendar</h2>
-                    
+                    <h2 class="sub-title" style="padding: 60px 0px 60px; color:#16325b; font-size:70px;">Calendar</h2>
+                        <p>only available to Wellesley students</p>
                         <iframe
                             src="https://calendar.google.com/calendar/embed?src=c_c229b4c4675adeb72fabaa7b643a500748ae31dc521889f58e797def5a714092%40group.calendar.google.com&ctz=America%2FNew_York&mode=WEEK"
                             style="border: 0"
@@ -263,7 +263,7 @@
     -->
 
         <!-- About -->
-        <div id="about" style="padding: 60px 0px;" class="section">
+        <div id="about" style="padding: 60px 0px; color:#16325b" class="section">
             <div class="block content-1170 center-relative center-text">  
                 <h2 class="sub-title" style="padding: 60px 0px 60px; color:#ffffff; font-size:70px;">About</h2>
                 <div style = "color:#ffffff; padding: 0px 0px 60px;">
@@ -273,7 +273,7 @@
          <!-- Meet the Eboard Section -->
 <div id="eboard" style="padding: 60px 0px; background-color:#ffffff;" class="section">
     <div class="block content-1170 center-relative center-text">
-      <h2 class="sub-title" style="padding: 60px 0px 60px; color:#221c5a; font-size:70px;">Meet the Eboard!</h2>
+      <h2 class="sub-title" style="padding: 60px 0px 60px; color:#16325b; font-size:70px;">Meet the Eboard!</h2>
   
       <div style="position:relative; max-width:900px; margin:0 auto;">
   
@@ -282,7 +282,7 @@
           <ul id="carousel-slides" style="display:flex; transition:transform 0.5s ease; padding:0; margin:0; list-style:none;">
             
             <!-- Clone last slide for looping -->
-            <li class="slide" style="min-width:100%; display:flex; align-items:center; gap:20px; color:#221c5a;">
+            <li class="slide" style="min-width:100%; display:flex; align-items:center; gap:20px; color:#16325b;">
                 <div style="flex:1;">
                     <h2  style="font-size:50px">Sophie Lin</h2>
                     <h6  style="position: relative; top: -25px; font-size:20px;"> WELLESLEY WEB WIZARD </h6>
@@ -528,12 +528,12 @@
         <!-- Buttons -->
         <button id="prev" 
         style="position:absolute; top:50%; left:-10px; transform:translateY(-50%); 
-               background:#221c5a; color:white; border:none; padding:10px 15px; 
+               background:#16325b; color:white; border:none; padding:10px 15px; 
                cursor:pointer; border-radius:5px; z-index:10;">&#10094;</button>
     
     <button id="next" 
         style="position:absolute; top:50%; right:-10px; transform:translateY(-50%); 
-               background:#221c5a; color:white; border:none; padding:10px 15px; 
+               background:#16325b; color:white; border:none; padding:10px 15px; 
                cursor:pointer; border-radius:5px; z-index:10;">&#10095;</button>
       </div>
     </div>
@@ -579,9 +579,9 @@
   </script>
   
 
-
+<!-- QUESTION OF THE WEEK -->
         <div id="qow" class="section">
-            <div id="contact" style="padding: 60px 0px; background-color: #221c5a;" class="section">
+            <div id="contact" style="padding: 60px 0px; background-color: #16325b;" class="section">
                 <div class="block content-1170 center-relative center-tex " style = "width: 130vh">  
                     <h2 class="sub-title" style="padding: 60px 0px 60px; color:white; font-size:70px;">Question of the Week</h2>
                     
@@ -595,23 +595,36 @@
                             </div>
                         </div>
                         <div style = " color:#000000; padding: 0px 0px 0px;">
-                            <strong>Given an integer array <code>nums</code> and an integer <code>k</code>, return the <code>k</code> most frequent elements. You may return the answer in any order.
+                            <strong>The string <code>"PAYPALISHIRING"</code> is written in a zigzag pattern on a given number of rows like this: 
+                                <br>
+                                P  &nbsp; &nbsp;&nbsp;A  &nbsp;&nbsp;&nbsp; H &nbsp;&nbsp;&nbsp;  N  <br>
+                                A P&nbsp; L S &nbsp;I&nbsp; &nbsp;I&nbsp;&nbsp;G <br>
+                                Y   &nbsp;&nbsp;&nbsp;&nbsp;I &nbsp; &nbsp;&nbsp;&nbsp; R <br>
+                                And then read line by line: <code>"PAHNAPLSIIGYIR"</code> <br>
+                                
+                                Write the code that will take a string and make this conversion given a number of rows: <br>
+                                
+                                <code>string convert(string s, int numRows)</code>
+                                 
                             </strong>
  
                             <br>
                             <br>
                         <strong>Example 1:</strong><br>
-                            Input: nums = [1,1,1,2,2,3], k = 2<br>
-                            Output: [1,2]<br>
+                            Input: s = "PAYPALISHIRING", numRows = 4 <br>
+                            Output: "PINALSIGYAHRPI" <br>
+                            Explanation: <br>
+                            P   &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;I  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; N <br>
+                            A  &nbsp; &nbsp; L S&nbsp; &nbsp; &nbsp;&nbsp;  I G <br>
+                            Y A  &nbsp; &nbsp; H R <br>
+                            P  &nbsp; &nbsp;&nbsp;  &nbsp;  I <br>
+                           
                             <br>
-
-
                         <strong>Constraints:</strong><br>
-                            1 <= nums.length <= 105<br>
-                            -104 <= nums[i] <= 104<br>
-                            k is in the range [1, the number of unique elements in the array].<br>
-                            It is guaranteed that the answer is unique.<br>
-                            <br>
+                        <code>1 <= s.length <= 1000<br>
+                        s consists of English letters (lower-case and upper-case), ',' and '.'.<br>
+                        1 <= numRows <= 1000<br></code>
+                        <br>
                      </div>
 
                         <div class="progress_bar ">
@@ -621,10 +634,31 @@
                             </div>
                         </div>
                         <p>
-                            <b>What is the brute force way to solve this problem (in  O(n log n))?</b><br>
-                            <b>Is there a data structure that can keep track and sort the first k elements in a more efficient runtime?</b><br>
-                            <b>Find a solution that takes is better than  O(n log n)?</b>
+                            <b>Could you draw it out in an 2D array?</b><br>
+                            <b>For better space complexity, what are the gaps in between the elements in each row? Can you use this to traverse the string without building a 2D array?</b><br>
+                            <b>What are the space and time complexity for these solutions?</b> <br><br>
                         </p>
+                        </div>
+
+                        <!--- button to leetcode-->
+                        <div id="contact" style="padding: 0px 0px 0px; background-color: #ffffff; text-align: center;">
+                        <a href="https://leetcode.com/problems/zigzag-conversion/description/"
+                        style="
+                            display: inline-block;
+                            padding: 14px 28px;
+                            background-color: #9e9dd6;
+                            color: #16325b;
+                            font-weight: 600;
+                            font-size: 16px;
+                            border-radius: 999px;
+                            text-decoration: none;
+                            transition: transform 0.2s ease, box-shadow 0.2s ease;
+                        "
+                        onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.15)'"
+                        onmouseout="this.style.transform='none'; this.style.boxShadow='none'"
+                        >
+                            code it out here!
+                        </a>
                         </div>
                         <pre>
 <!-- code implementation -->
@@ -792,14 +826,14 @@
         <!-- Contact -->
         <div id="contact" style="padding: 0px 0px; background-color: white;" class="section">
             <div class="block content-1170 center-relative center-text">  
-                <h2 class="sub-title" style="padding: 60px 0px 60px; color:#221c5a; font-size:70px;">Contact</h2>
+                <h2 class="sub-title" style="padding: 60px 0px 60px; color:#16325b; font-size:70px;">Contact</h2>
                 <div id="contact" style="padding: 0px 0px 0px; background-color: #ffffff; text-align: center;">
                     <a href="mailto:ac134@wellesley.edu,cc122@wellesley.edu"
                 style="
                     display: inline-block;
                     padding: 14px 28px;
                     background-color: #9e9dd6;
-                    color: #221c5a;
+                    color: #16325b;
                     font-weight: 600;
                     font-size: 16px;
                     border-radius: 999px;
@@ -812,7 +846,7 @@
                 email us for inquiries
                 </a>
 
-                    <h2 class="sub-title" style="padding-top: 40px; padding-bottom: 20px;background-color: white;  color: #221c5a; font-size: 30px;">Follow Us on Instagram!</h2>
+                    <h2 class="sub-title" style="padding-top: 40px; padding-bottom: 20px;background-color: white;  color: #16325b; font-size: 30px;">Follow Us on Instagram!</h2>
                     
                     <!-- Instagram Embed -->
                     <a href="https://www.instagram.com/wellesleycsclub/" target="_blank" style="text-decoration: none;">
