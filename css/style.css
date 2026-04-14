@@ -422,6 +422,30 @@ h2.sub-title
     color: #e3a436;
 }
 
+
+.resource_link {
+    display: block;
+    margin: 15px auto;
+    max-width: 600px;
+  
+    padding: 18px 20px;
+    border-radius: 12px;
+  
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    text-decoration: none;
+  
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  
+    transition: all 0.25s ease;
+  }
+  
+  /* hover effect */
+  .resource_link:hover {
+    background: white;
+    color: black;
+    transform: translateY(-3px);
+  } 
 .service-holder 
 {
     display: inline-block;
