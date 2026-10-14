@@ -444,36 +444,30 @@
                             </div>
                         </div>
                         <div style = " color:#000000; padding: 0px 0px 0px;">
-                            <strong>The string <code>"PAYPALISHIRING"</code> is written in a zigzag pattern on a given number of rows like this: 
-                                <br>
-                                P  &nbsp; &nbsp;&nbsp;A  &nbsp;&nbsp;&nbsp; H &nbsp;&nbsp;&nbsp;  N  <br>
-                                A P&nbsp; L S &nbsp;I&nbsp; &nbsp;I&nbsp;&nbsp;G <br>
-                                Y   &nbsp;&nbsp;&nbsp;&nbsp;I &nbsp; &nbsp;&nbsp;&nbsp; R <br>
-                                And then read line by line: <code>"PAHNAPLSIIGYIR"</code> <br>
-                                
-                                Write the code that will take a string and make this conversion given a number of rows: <br>
-                                
-                                <code>string convert(string s, int numRows)</code>
-                                 
-                            </strong>
+                            <strong> Given the <code>root</code> of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center). </strong>
  
                             <br>
                             <br>
                         <strong>Example 1:</strong><br>
-                            Input: s = "PAYPALISHIRING", numRows = 4 <br>
-                            Output: "PINALSIGYAHRPI" <br>
-                            Explanation: <br>
-                            P   &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;I  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; N <br>
-                            A  &nbsp; &nbsp; L S&nbsp; &nbsp; &nbsp;&nbsp;  I G <br>
-                            Y A  &nbsp; &nbsp; H R <br>
-                            P  &nbsp; &nbsp;&nbsp;  &nbsp;  I <br>
-                           
+                            <img src="team\2627\leetCodeImgs\symtree2.jpg" alt="Symmetric Tree Example 2" style="width: 200px; height: auto; margin-top: 10px;">
                             <br>
+                            Input: root = [1,2,2,3,4,4,3]<br>
+                            Output: true
+                            
+                            <br><br>
+
+                        <strong>Example 2:</strong><br>
+                            <img src="team\2627\leetCodeImgs\symtree2.jpg" alt="Symmetric Tree Example 2" style="width: 200px; height: auto; margin-top: 10px;">
+                            <br>
+                            Input: root = [1,2,2,null,3,null,3]<br>
+                            Output: false
+
+                            <br><br>
+
                         <strong>Constraints:</strong><br>
-                        <code>1 <= s.length <= 1000<br>
-                        s consists of English letters (lower-case and upper-case), ',' and '.'.<br>
-                        1 <= numRows <= 1000<br></code>
-                        <br>
+                        The number of nodes in the tree is in the range <code>[1, 1000]</code>.
+                        <code>-100 <= Node.val <= 100</code>
+                        <br><br>
                      </div>
 
                         <div class="progress_bar ">
@@ -483,9 +477,8 @@
                             </div>
                         </div>
                         <p>
-                            <b>Could you draw it out in an 2D array?</b><br>
-                            <b>For better space complexity, what are the gaps in between the elements in each row? Can you use this to traverse the string without building a 2D array?</b><br>
-                            <b>What are the space and time complexity for these solutions?</b> <br><br>
+                            <b>If a tree is a perfect mirror image of itself, how do the outer edges (the leftmost and rightmost nodes) relate to each other?</b><br>
+                            <b>Could you solve it both recursively and iteratively?</b><br><br>
                         </p>
                         </div>
 
