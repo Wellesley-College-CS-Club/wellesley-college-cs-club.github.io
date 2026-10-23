@@ -1,0 +1,93 @@
+
+  <div
+    id="contact"
+    style="padding: 30px 0px; background-color: #16325b"
+    class="section"
+  >
+    <div
+      class="block content-1170 center-relative center-tex"
+      style="width: 130vh"
+    >
+      <h2
+        class="sub-title"
+        style="padding: 60px 0px 60px; color: white; font-size: 70px"
+      >
+        Question of the Week
+      </h2>
+
+      <div
+        class="section-content-holder center-relative"
+        style="padding: 20px 20px 20px 20px"
+      >
+        <div class="content-wrapper">
+          <div class="progress_bar">
+            <div class="progress_bar_field_holder" style="width: 75%">
+              <div
+                class="progress_bar_title"
+                style="color: #55b286; padding: 10px 10px"
+              >
+                {{TITLE}}
+              </div>
+              <div
+                class="progress_bar_field_perecent"
+                style="background-color: #32db8a"
+              ></div>
+            </div>
+          </div>
+          <div style="color: #000000; padding: 0px 0px 0px">{{PROBLEM}}</div>
+          <div class="progress_bar">
+            <div class="progress_bar_field_holder" style="width: 75%">
+              <div
+                class="progress_bar_title"
+                style="color: #b24564; padding: 10px 10px 0px 10px"
+              >
+                HINT
+              </div>
+              <div
+                class="progress_bar_field_perecent"
+                style="background-color: #e74c78"
+              ></div>
+            </div>
+          </div>
+          <p><b>{{HINT}}</b></p>
+
+          <!--- button to leetcode-->
+          <br>
+          <div
+            style="
+              padding: 0px 0px 0px;
+              background-color: #ffffff;
+              text-align: center;
+            "
+          >
+            <a
+              href="{{URL}}"
+              style="
+                display: inline-block;
+                padding: 14px 28px;
+                background-color: #9e9dd6;
+                color: #16325b;
+                font-weight: 600;
+                font-size: 16px;
+                border-radius: 999px;
+                text-decoration: none;
+                transition:
+                  transform 0.2s ease,
+                  box-shadow 0.2s ease;
+              "
+              onmouseover="
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 8px 20px rgba(0,0,0,0.15)';
+              "
+              onmouseout="
+                this.style.transform = 'none';
+                this.style.boxShadow = 'none';
+              "
+            >
+              code it out here!
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
