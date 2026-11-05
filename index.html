@@ -463,7 +463,7 @@
                 class="progress_bar_title"
                 style="color: #55b286; padding: 10px 10px"
               >
-                Median of Two Sorted Arrays
+                Search in Rotated Sorted Array II
               </div>
               <div
                 class="progress_bar_field_perecent"
@@ -471,38 +471,33 @@
               ></div>
             </div>
           </div>
-          <div style="color: #000000; padding: 0px 0px 0px"><p>Given two sorted arrays <code>nums1</code> and <code>nums2</code> of size <code>m</code> and <code>n</code> respectively, return <strong>the median</strong> of the two sorted arrays.</p>
+          <div style="color: #000000; padding: 0px 0px 0px"><p>There is an integer array <code>nums</code> sorted in non-decreasing order (not necessarily with <strong>distinct</strong> values).</p><br>
 
-<p>The overall run time complexity should be <code>O(log (m+n))</code>.</p>
+            <p>Before being passed to your function, <code>nums</code> is <strong>rotated</strong> at an unknown pivot index <code>k</code> (<code>0 &lt;= k &lt; nums.length</code>) such that the resulting array is <code>[nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]]</code> (<strong>0-indexed</strong>). For example, <code>[0,1,2,4,4,4,5,6,6,7]</code> might be rotated at pivot index <code>5</code> and become <code>[4,5,6,6,7,0,1,2,4,4]</code>.</p> <br>
+
+            <p>Given the array <code>nums</code> <strong>after</strong> the rotation and an integer <code>target</code>, return <code>true</code><em> if </em><code>target</code><em> is in </em><code>nums</code><em>, or </em><code>false</code><em> if it is not in </em><code>nums</code><em>.</em></p>
+            <br>
+            <p>You must decrease the overall operation steps as much as possible.</p>
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
-
-<pre>
-<strong>Input:</strong> nums1 = [1,3], nums2 = [2]
-<strong>Output:</strong> 2.00000
-<strong>Explanation:</strong> merged array = [1,2,3] and median is 2.
-</pre><br>
-
-<p><strong class="example">Example 2:</strong></p>
-
-<pre>
-<strong>Input:</strong> nums1 = [1,2], nums2 = [3,4]
-<strong>Output:</strong> 2.50000
-<strong>Explanation:</strong> merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.
+<pre><strong>Input:</strong> nums = [2,5,6,0,0,1,2], target = 0
+<strong>Output:</strong> true
+<br>
+</pre><p><strong class="example">Example 2:</strong></p>
+<pre><strong>Input:</strong> nums = [2,5,6,0,0,1,2], target = 3
+<strong>Output:</strong> false
 </pre>
-
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li><code>nums1.length == m</code></li>
-	<li><code>nums2.length == n</code></li>
-	<li><code>0 &lt;= m &lt;= 1000</code></li>
-	<li><code>0 &lt;= n &lt;= 1000</code></li>
-	<li><code>1 &lt;= m + n &lt;= 2000</code></li>
-	<li><code>-10<sup>6</sup> &lt;= nums1[i], nums2[i] &lt;= 10<sup>6</sup></code></li>
+	<li><code>1 &lt;= nums.length &lt;= 5000</code></li>
+	<li><code>-10<sup>4</sup> &lt;= nums[i] &lt;= 10<sup>4</sup></code></li>
+	<li><code>nums</code> is guaranteed to be rotated at some pivot.</li>
+	<li><code>-10<sup>4</sup> &lt;= target &lt;= 10<sup>4</sup></code></li>
 </ul>
+<br>
 </div> <br>
           <div class="progress_bar">
             <div class="progress_bar_field_holder" style="width: 75%">
@@ -518,7 +513,7 @@
               ></div>
             </div>
           </div>
-          <p><b>How could you break this problem down into smaller parts?</b></p>
+          <p><b>Think about what you could store to avoid re-scanning the input.</b></p>
 
           <!--- button to leetcode-->
           <br>
@@ -530,7 +525,7 @@
             "
           >
             <a
-              href="https://leetcode.com/problems/median-of-two-sorted-arrays/description/"
+              href="https://leetcode.com/problems/search-in-rotated-sorted-array-ii/description/"
               style="
                 display: inline-block;
                 padding: 14px 28px;
