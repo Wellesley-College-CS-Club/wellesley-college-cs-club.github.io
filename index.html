@@ -462,40 +462,62 @@
               <div
                 class="progress_bar_title"
                 style="color: #55b286; padding: 10px 10px"
-              >Search in Rotated Sorted Array II</div>
+              >
+                Regular Expression Matching
+              </div>
               <div
                 class="progress_bar_field_perecent"
                 style="background-color: #32db8a"
               ></div>
             </div>
           </div>
-          <div style="color: #000000; padding: 0px 0px 0px"><p>There is an integer array <code>nums</code> sorted in non-decreasing order (not necessarily with <strong>distinct</strong> values).</p><br>
+          <div style="color: #000000; padding: 0px 0px 0px"><p>Given an input string <strong>s</strong> and a pattern <strong>p</strong>, implement regular expression matching with support for <code>&#39;.&#39;</code> and <code>&#39;*&#39;</code> where:</p>
 
-            <p>Before being passed to your function, <code>nums</code> is <strong>rotated</strong> at an unknown pivot index <code>k</code> (<code>0 &lt;= k &lt; nums.length</code>) such that the resulting array is <code>[nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]]</code> (<strong>0-indexed</strong>). For example, <code>[0,1,2,4,4,4,5,6,6,7]</code> might be rotated at pivot index <code>5</code> and become <code>[4,5,6,6,7,0,1,2,4,4]</code>.</p> <br>
+<ul>
+	<li><code>&#39;.&#39;</code> Matches any single character.​​​​</li>
+	<li><code>&#39;*&#39;</code> Matches zero or more of the preceding element.</li>
+</ul>
 
-            <p>Given the array <code>nums</code> <strong>after</strong> the rotation and an integer <code>target</code>, return <code>true</code><em> if </em><code>target</code><em> is in </em><code>nums</code><em>, or </em><code>false</code><em> if it is not in </em><code>nums</code><em>.</em></p>
-            <br>
-            <p>You must decrease the overall operation steps as much as possible.</p>
+<p>Return a boolean indicating whether the matching covers the entire input string (not partial).</p>
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
-<pre><strong>Input:</strong> nums = [2,5,6,0,0,1,2], target = 0
-<strong>Output:</strong> true
-<br>
-</pre><p><strong class="example">Example 2:</strong></p>
-<pre><strong>Input:</strong> nums = [2,5,6,0,0,1,2], target = 3
+
+<pre>
+<strong>Input:</strong> s = &quot;aa&quot;, p = &quot;a&quot;
 <strong>Output:</strong> false
+<strong>Explanation:</strong> &quot;a&quot; does not match the entire string &quot;aa&quot;.
 </pre>
+
+<br>
+<p><strong class="example">Example 2:</strong></p>
+
+<pre>
+<strong>Input:</strong> s = &quot;aa&quot;, p = &quot;a*&quot;
+<strong>Output:</strong> true
+<strong>Explanation:</strong> &#39;*&#39; means zero or more of the preceding element, &#39;a&#39;. 
+Therefore, by repeating &#39;a&#39; once, it becomes &quot;aa&quot;.
+</pre>
+
+<br>
+<p><strong class="example">Example 3:</strong></p>
+
+<pre>
+<strong>Input:</strong> s = &quot;ab&quot;, p = &quot;.*&quot;
+<strong>Output:</strong> true
+<strong>Explanation:</strong> &quot;.*&quot; means &quot;zero or more (*) of any character (.)&quot;.
+</pre>
+
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li><code>1 &lt;= nums.length &lt;= 5000</code></li>
-	<li><code>-10<sup>4</sup> &lt;= nums[i] &lt;= 10<sup>4</sup></code></li>
-	<li><code>nums</code> is guaranteed to be rotated at some pivot.</li>
-	<li><code>-10<sup>4</sup> &lt;= target &lt;= 10<sup>4</sup></code></li>
+	<li><code>1 &lt;= s.length&nbsp;&lt;= 20</code></li>
+	<li><code>1 &lt;= p.length&nbsp;&lt;= 20</code></li>
+	<li><code>s</code> contains only lowercase English letters.</li>
+	<li><code>p</code> contains only lowercase English letters, <code>&#39;.&#39;</code>, and&nbsp;<code>&#39;*&#39;</code>.</li>
+	<li>It is guaranteed for each appearance of the character <code>&#39;*&#39;</code>, there will be a previous valid character to match.</li>
 </ul>
-<br>
 </div> <br>
           <div class="progress_bar">
             <div class="progress_bar_field_holder" style="width: 75%">
@@ -511,7 +533,7 @@
               ></div>
             </div>
           </div>
-          <p><b>Think about what you could store to avoid re-scanning the input.</b></p>
+          <p><b>Ignore the * symbol at the beginning and focus on the rest of the pattern.</b></p>
 
           <!--- button to leetcode-->
           <br>
@@ -523,7 +545,7 @@
             "
           >
             <a
-              href="https://leetcode.com/problems/search-in-rotated-sorted-array-ii/description/"
+              href="https://leetcode.com/problems/regular-expression-matching/description/"
               style="
                 display: inline-block;
                 padding: 14px 28px;
